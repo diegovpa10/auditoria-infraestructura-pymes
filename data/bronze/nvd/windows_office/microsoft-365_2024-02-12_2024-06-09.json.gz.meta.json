@@ -1,0 +1,14 @@
+{
+  "fuente": "NVD API 2.0",
+  "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+  "grupo": "windows_office",
+  "keyword": "microsoft 365",
+  "ventana": [
+    "2024-02-12",
+    "2024-06-09"
+  ],
+  "con_api_key": true,
+  "sha256_contenido": "feefb1a11b200cf18bf9ab829f2fa1ee40a81b81e821ac368e862c130a9ebbf5",
+  "bytes_contenido": 15697,
+  "ingestado_utc": "2026-11-09T02:44:05.653298+00:00"
+}

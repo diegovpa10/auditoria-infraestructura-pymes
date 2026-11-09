@@ -1,0 +1,14 @@
+{
+  "fuente": "NVD API 2.0",
+  "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+  "grupo": "impresoras_hp",
+  "keyword": "hp printer",
+  "ventana": [
+    "2025-02-03",
+    "2025-06-01"
+  ],
+  "con_api_key": true,
+  "sha256_contenido": "08b8f9fbf953e97f938df942343801aa9c93a7c6fdbf9d2071497785293db63c",
+  "bytes_contenido": 322702,
+  "ingestado_utc": "2026-11-09T02:44:51.600530+00:00"
+}

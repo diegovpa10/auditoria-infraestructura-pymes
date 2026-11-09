@@ -1,0 +1,14 @@
+{
+  "fuente": "NVD API 2.0",
+  "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+  "grupo": "contpaqi",
+  "keyword": "contpaqi",
+  "ventana": [
+    "2024-02-12",
+    "2024-06-09"
+  ],
+  "con_api_key": true,
+  "sha256_contenido": "72aea317067df749659433b5c350e0ea6ca758308eb6fd19d1bbed4d7e034242",
+  "bytes_contenido": 342,
+  "ingestado_utc": "2026-11-09T02:45:03.012292+00:00"
+}

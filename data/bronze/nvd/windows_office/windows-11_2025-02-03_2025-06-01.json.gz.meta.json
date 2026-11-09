@@ -1,0 +1,14 @@
+{
+  "fuente": "NVD API 2.0",
+  "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+  "grupo": "windows_office",
+  "keyword": "windows 11",
+  "ventana": [
+    "2025-02-03",
+    "2025-06-01"
+  ],
+  "con_api_key": true,
+  "sha256_contenido": "ef52e7e1ed9423d2f60ca195d54e110885b71afe609a89356e9fc0ce22a586da",
+  "bytes_contenido": 81288,
+  "ingestado_utc": "2026-11-09T02:43:33.233738+00:00"
+}

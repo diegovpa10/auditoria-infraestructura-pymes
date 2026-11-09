@@ -1,0 +1,14 @@
+{
+  "fuente": "NVD API 2.0",
+  "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+  "grupo": "soporte_remoto",
+  "keyword": "teamviewer",
+  "ventana": [
+    "2026-05-25",
+    "2026-09-20"
+  ],
+  "con_api_key": true,
+  "sha256_contenido": "13002337269fee083cf0c7043efcebaed9783fc090bc2521d286f9d0acc2dd98",
+  "bytes_contenido": 9109,
+  "ingestado_utc": "2026-11-09T02:45:39.446865+00:00"
+}

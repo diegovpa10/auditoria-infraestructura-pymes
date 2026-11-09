@@ -1,0 +1,14 @@
+{
+  "fuente": "NVD API 2.0",
+  "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+  "grupo": "soporte_remoto",
+  "keyword": "anydesk",
+  "ventana": [
+    "2023-02-20",
+    "2023-06-18"
+  ],
+  "con_api_key": true,
+  "sha256_contenido": "1988ca13672f841185951dbdaf2639958f8d7633557de4a519651c84b9ebc836",
+  "bytes_contenido": 341,
+  "ingestado_utc": "2026-11-09T02:45:15.078876+00:00"
+}

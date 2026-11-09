@@ -1,0 +1,14 @@
+{
+  "fuente": "NVD API 2.0",
+  "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+  "grupo": "modems_red",
+  "keyword": "zte",
+  "ventana": [
+    "2024-10-07",
+    "2025-02-02"
+  ],
+  "con_api_key": true,
+  "sha256_contenido": "74ba9d338473159125102fc319101f0087821f949beef439e4f197e00957d60d",
+  "bytes_contenido": 19949,
+  "ingestado_utc": "2026-11-09T02:42:18.594322+00:00"
+}

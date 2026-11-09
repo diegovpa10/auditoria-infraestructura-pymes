@@ -1,0 +1,14 @@
+{
+  "fuente": "NVD API 2.0",
+  "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+  "grupo": "modems_red",
+  "keyword": "totalplay",
+  "ventana": [
+    "2022-06-27",
+    "2022-10-23"
+  ],
+  "con_api_key": true,
+  "sha256_contenido": "fdcf020c540363f890c75ed7b32fc94c8d9dcbbe27b84c672b1d3b02b32cc106",
+  "bytes_contenido": 343,
+  "ingestado_utc": "2026-11-09T02:42:26.468551+00:00"
+}

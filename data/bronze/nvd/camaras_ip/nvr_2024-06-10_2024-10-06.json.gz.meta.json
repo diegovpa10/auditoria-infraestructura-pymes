@@ -1,0 +1,14 @@
+{
+  "fuente": "NVD API 2.0",
+  "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+  "grupo": "camaras_ip",
+  "keyword": "nvr",
+  "ventana": [
+    "2024-06-10",
+    "2024-10-06"
+  ],
+  "con_api_key": true,
+  "sha256_contenido": "7961022cf73ee71f6822372aa2266c58911c256dd10bef8fa1000c37796e0476",
+  "bytes_contenido": 22996,
+  "ingestado_utc": "2026-11-09T02:43:15.969361+00:00"
+}

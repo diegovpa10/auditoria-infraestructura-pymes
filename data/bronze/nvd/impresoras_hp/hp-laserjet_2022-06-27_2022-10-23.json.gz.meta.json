@@ -1,0 +1,14 @@
+{
+  "fuente": "NVD API 2.0",
+  "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+  "grupo": "impresoras_hp",
+  "keyword": "hp laserjet",
+  "ventana": [
+    "2022-06-27",
+    "2022-10-23"
+  ],
+  "con_api_key": true,
+  "sha256_contenido": "5b3e38cb97e34d04d20d2e8fe38540af84bca245698a72e8ff2b611b56a41b5b",
+  "bytes_contenido": 345,
+  "ingestado_utc": "2026-11-09T02:44:15.467121+00:00"
+}
