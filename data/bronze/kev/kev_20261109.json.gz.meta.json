@@ -1,7 +1,7 @@
 {
   "fuente": "CISA KEV",
   "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
-  "sha256_contenido": "cc9847bb1f27b334a68d668eed2ff97d455ebdfdeef4065eae64a7e5ce1a5012",
-  "bytes_contenido": 1475804,
-  "ingestado_utc": "2026-11-09T02:42:10.399013+00:00"
+  "sha256_contenido": "fb32e3dee72885162735de03f716aa8ee8ccb5c1ecad2ec303d9d8fe682b8bcd",
+  "bytes_contenido": 1482299,
+  "ingestado_utc": "2026-11-09T21:49:39.041826+00:00"
 }
