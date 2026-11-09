@@ -33,9 +33,18 @@ Si les pasara algo, ¿cómo se darían cuenta? La lentitud de los equipos, caida
 Series: mensuales desde 2021-11 (≈60 periodos; meta ≥ 36). Capas: Bronze (crudo + metadatos) → Silver (limpio, validado) → Gold (series por grupo).
 
 ## 5. Análisis ético y legal
-- Fuentes públicas; sin escaneo de redes ni acceso a sistemas.
-- Negocio anonimizado; sin IPs, contraseñas, marcas/modelos que lo identifiquen.
-- **Pendientes de verificar (leerlo directamente en cada sitio):** términos de uso/licencia de NVD y CISA para redistribuir datos; límites de la API de NVD (ventana máxima 120 días, peticiones por ventana de tiempo con/sin API key); acceso y licencia de DENUE.
+- Fuentes públicas y no intrusivas: Solo se consumen APIs y feeds públicos; no se realiza escaneo de redes, sondeo de puertos ni acceso a sistemas de la empresa.
+- Anonimización del actor: El negocio se mantiene anónimo bajo la denominación genérica «pyme distribuidora de productos químicos en Colima»; no se publican nombres comerciales, razones sociales, RFC, IPs ni credenciales.
+- Términos de NIST NVD:
+  - Servicio público de NIST (gobierno de EE. UU.) sin restricciones para análisis y redistribución de datos.
+  - Atribución obligatoria incorporada: "This product uses the NVD API but is not endorsed or certified by the NVD."
+  - Límites de la API 2.0: Ventana temporal máxima de 120 días por petición (DIAS_VENTANA = 119 en el código). Rate limit de 5 peticiones por ventana de 30 s sin API key (pausa de 6.5 s implementada) y 50 peticiones con key (pausa de 0.7 s).
+- Términos de CISA KEV (Dominio Público):
+  - El catálogo de vulnerabilidades explotadas (KEV) es una obra del Gobierno Federal de EE. UU. en el Dominio Público (17 U.S.C. § 105 / CC0). Libre descarga y redistribución. (Nota: no confundir con el programa bilateral AIS de CISA, el cual no aplica a este feed público).
+  - Se utiliza tal cual (as-is) sin uso indebido de los logotipos oficiales de CISA.
+- DENUE (INEGI - para E2):
+  - Libre acceso y consulta bajo la política de datos abiertos del INEGI citando la fuente.
+  - Requiere un token de consulta gratuito que se obtiene registrando un correo institucional.
 
 ## 6. Limitaciones conocidas
 - Las palabras clave son proxies; «cámaras IP genéricas» y «soporte remoto» no se asocian a un producto concreto.

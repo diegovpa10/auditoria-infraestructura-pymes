@@ -1,0 +1,5 @@
+fecha,fase,actividad,inicio,fin,interrupcion_min,delta_min,comentarios
+2026-11-08,concepcion,entrevista al dueño y levantamiento de inventario,16:00,16:45,0,45,preguntas sobre sistemas y respaldos
+2026-11-08,diseno,definicion de grupos de tecnologia y propuesta E0,17:00,18:00,10,50,redaccion de propuesta.md
+2026-11-08,codificacion,pruebas unitarias y configuracion de extractores bronze,18:30,19:40,5,65,verificacion de pruebas locales y workflows
+2026-11-08,calidad,revision legal NVD y CISA y verificacion de secretos,20:00,20:40,0,40,cierre de seccion 5 y anonimizacion
