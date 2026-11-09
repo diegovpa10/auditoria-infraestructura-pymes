@@ -1,0 +1,36 @@
+name: extraer-bronze
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"   # lunes 12:00 UTC (06:00 Colima)
+  workflow_dispatch:        # ejecucion manual desde la pestana Actions
+
+permissions:
+  contents: write
+
+jobs:
+  extraer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m unittest discover -s tests
+      - name: Extraer KEV
+        run: python src/bronze/kev.py
+      - name: Extraer NVD
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}   # opcional; sin ella el proceso es mas lento
+        run: python src/bronze/nvd.py
+      - name: Revisar periodos
+        run: python src/bronze/check_periodos.py
+      - name: Guardar datos nuevos
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "bronze: extraccion automatica $(date -u +%F)"
+          git push

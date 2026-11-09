@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+*.key
+secrets*
+.DS_Store
+# Nunca subas: contrasenas, claves de API, IPs/datos internos de la empresa real.

@@ -1,0 +1,36 @@
+{
+  "_nota": "Grupos de tecnologia derivados del inventario de la pyme (anonimizada). Las palabras clave son una aproximacion: cuentan vulnerabilidades de la TECNOLOGIA, no ataques al negocio. Los grupos marcados con confirmar=true dependen de datos que faltan.",
+  "desde": "2021-11-01",
+  "grupos": {
+    "modems_red": {
+      "descripcion": "Modems/routers del proveedor de internet (ZTE de Totalplay; marca del modem Megacable por confirmar)",
+      "keywords": ["zte", "totalplay"],
+      "confirmar": true
+    },
+    "camaras_ip": {
+      "descripcion": "Camaras IP genericas compradas en linea (modelo exacto desconocido; se usan proxies de la categoria)",
+      "keywords": ["ip camera", "dvr", "nvr"],
+      "confirmar": true
+    },
+    "windows_office": {
+      "descripcion": "Windows 11 Pro y Microsoft Office/365",
+      "keywords": ["windows 11", "microsoft office", "microsoft 365"],
+      "confirmar": false
+    },
+    "impresoras_hp": {
+      "descripcion": "Impresoras HP",
+      "keywords": ["hp laserjet", "hp officejet", "hp printer"],
+      "confirmar": false
+    },
+    "contpaqi": {
+      "descripcion": "Software de gestion y facturacion CONTPAQi (probablemente casi sin CVE publicos: es un hallazgo en si)",
+      "keywords": ["contpaqi"],
+      "confirmar": true
+    },
+    "soporte_remoto": {
+      "descripcion": "Herramienta de soporte remoto del proveedor externo (por confirmar; AnyDesk/TeamViewer como proxies)",
+      "keywords": ["anydesk", "teamviewer"],
+      "confirmar": true
+    }
+  }
+}
