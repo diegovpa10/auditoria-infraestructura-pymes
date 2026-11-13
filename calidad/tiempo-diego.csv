@@ -3,3 +3,6 @@ fecha,fase,actividad,inicio,fin,interrupcion_min,delta_min,comentarios
 2026-11-08,diseno,definicion de grupos de tecnologia y propuesta E0,17:00,18:00,10,50,redaccion de propuesta.md
 2026-11-08,codificacion,pruebas unitarias y configuracion de extractores bronze,18:30,19:40,5,65,verificacion de pruebas locales y workflows
 2026-11-08,calidad,revision legal NVD y CISA y verificacion de secretos,20:00,20:40,0,40,cierre de seccion 5 y anonimizacion
+2026-11-10,calidad,revision de requisitos para e1,19:00,20:30,15,75,creacion de los requisitos a cumplir para la etapa 1
+2026-11-12,diseño,definicion para la resolucion de los conflictos de esquema y diagnosticos MCAR/MAR/MNAR,19:00,21:00,0,180,propuesta terminada para seguimiento del proyecto
+2026-11-12,codificacion,generar codigo para diagnostico MCAR/MAR/MNAR-pruebas con Pandera-Cuarentenas-deteccion de atipicos IQR,21:30,24:15,15,150,codificacion de etapa 1 terminada

@@ -1,0 +1,42 @@
+cve_id,kev_date_added_raw,kev_due_date_raw,ransomware,vendor_project,product,kev_cwes,grupo_keyword_kev,kev_date_added,kev_due_date,periodo_kev
+CVE-2009-0238,2026-04-14,2026-04-28,Unknown,Microsoft,Office,CWE-94,windows_office,2026-04-14,2026-04-28,2026-04
+CVE-2026-21514,2026-02-10,2026-03-03,Unknown,Microsoft,Office,CWE-807,windows_office,2026-02-10,2026-03-03,2026-02
+CVE-2026-21509,2026-01-26,2026-02-16,Unknown,Microsoft,Office,CWE-807,windows_office,2026-01-26,2026-02-16,2026-01
+CVE-2009-0556,2026-01-07,2026-01-28,Unknown,Microsoft,Office,CWE-94,windows_office,2026-01-07,2026-01-28,2026-01
+CVE-2007-0671,2025-08-12,2025-09-02,Unknown,Microsoft,Office,,windows_office,2025-08-12,2025-09-02,2025-08
+CVE-2025-1316,2025-03-19,2025-04-09,Unknown,Edimax,IC-7100 IP Camera,CWE-78,camaras_ip,2025-03-19,2025-04-09,2025-03
+CVE-2024-21413,2025-02-06,2025-02-27,Unknown,Microsoft,Office Outlook,CWE-20,windows_office,2025-02-06,2025-02-27,2025-02
+CVE-2021-40407,2024-12-18,2025-01-08,Unknown,Reolink,RLC-410W IP Camera,CWE-78,camaras_ip,2024-12-18,2025-01-08,2024-12
+CVE-2019-11001,2024-12-18,2025-01-08,Unknown,Reolink,Multiple IP Cameras,CWE-78,camaras_ip,2024-12-18,2025-01-08,2024-12
+CVE-2022-23227,2024-12-18,2025-01-08,Unknown,NUUO,NVRmini2 Devices,CWE-306,camaras_ip,2024-12-18,2025-01-08,2024-12
+CVE-2018-14933,2024-12-18,2025-01-08,Unknown,NUUO,NVRmini Devices,CWE-78,camaras_ip,2024-12-18,2025-01-08,2024-12
+CVE-2021-33045,2024-08-21,2024-09-11,Unknown,Dahua,IP Camera Firmware,CWE-287,camaras_ip,2024-08-21,2024-09-11,2024-08
+CVE-2021-33044,2024-08-21,2024-09-11,Unknown,Dahua,IP Camera Firmware,CWE-287,camaras_ip,2024-08-21,2024-09-11,2024-08
+CVE-2023-47565,2023-12-21,2024-01-11,Unknown,QNAP,VioStor NVR,CWE-78,camaras_ip,2023-12-21,2024-01-11,2023-12
+CVE-2023-23397,2023-03-14,2023-04-04,Unknown,Microsoft,Office,CWE-294,windows_office,2023-03-14,2023-04-04,2023-03
+CVE-2023-21715,2023-02-14,2023-03-07,Unknown,Microsoft,Office,CWE-863,windows_office,2023-02-14,2023-03-07,2023-02
+CVE-2013-1331,2022-06-08,2022-06-22,Unknown,Microsoft,Office,CWE-119,windows_office,2022-06-08,2022-06-22,2022-06
+CVE-2009-0563,2022-06-08,2022-06-22,Unknown,Microsoft,Office,CWE-119,windows_office,2022-06-08,2022-06-22,2022-06
+CVE-2009-0557,2022-06-08,2022-06-22,Unknown,Microsoft,Office,CWE-94,windows_office,2022-06-08,2022-06-22,2022-06
+CVE-2021-38646,2022-03-28,2022-04-18,Known,Microsoft,Office,,windows_office,2022-03-28,2022-04-18,2022-03
+CVE-2015-1770,2022-03-28,2022-04-18,Unknown,Microsoft,Office,CWE-19,windows_office,2022-03-28,2022-04-18,2022-03
+CVE-2017-11826,2022-03-03,2022-03-24,Unknown,Microsoft,Office,CWE-119,windows_office,2022-03-03,2022-03-24,2022-03
+CVE-2017-0261,2022-03-03,2022-03-24,Unknown,Microsoft,Office,CWE-416,windows_office,2022-03-03,2022-03-24,2022-03
+CVE-2016-7193,2022-03-03,2022-03-24,Unknown,Microsoft,Office,CWE-119,windows_office,2022-03-03,2022-03-24,2022-03
+CVE-2015-2545,2022-03-03,2022-03-24,Unknown,Microsoft,Office,CWE-20,windows_office,2022-03-03,2022-03-24,2022-03
+CVE-2015-1642,2022-03-03,2022-03-24,Unknown,Microsoft,Office,CWE-119,windows_office,2022-03-03,2022-03-24,2022-03
+CVE-2012-1856,2022-03-03,2022-03-24,Unknown,Microsoft,Office,CWE-94,windows_office,2022-03-03,2022-03-24,2022-03
+CVE-2010-3333,2022-03-03,2022-03-24,Unknown,Microsoft,Office,CWE-119,windows_office,2022-03-03,2022-03-24,2022-03
+CVE-2017-8570,2022-02-25,2022-08-25,Unknown,Microsoft,Office,,windows_office,2022-02-25,2022-08-25,2022-02
+CVE-2017-0262,2022-02-10,2022-08-10,Unknown,Microsoft,Office,,windows_office,2022-02-10,2022-08-10,2022-02
+CVE-2021-42292,2021-11-17,2021-12-01,Unknown,Microsoft,Office,CWE-357,windows_office,2021-11-17,2021-12-01,2021-11
+CVE-2020-5735,2021-11-03,2022-05-03,Unknown,Amcrest,Cameras and Network Video Recorder (NVR),CWE-121,camaras_ip,2021-11-03,2022-05-03,2021-11
+CVE-2018-0798,2021-11-03,2022-05-03,Unknown,Microsoft,Office,CWE-787,windows_office,2021-11-03,2022-05-03,2021-11
+CVE-2018-0802,2021-11-03,2022-05-03,Known,Microsoft,Office,CWE-787,windows_office,2021-11-03,2022-05-03,2021-11
+CVE-2015-1641,2021-11-03,2022-05-03,Unknown,Microsoft,Office,CWE-399,windows_office,2021-11-03,2022-05-03,2021-11
+CVE-2017-11882,2021-11-03,2022-05-03,Known,Microsoft,Office,CWE-119,windows_office,2021-11-03,2022-05-03,2021-11
+CVE-2021-27059,2021-11-03,2021-11-17,Unknown,Microsoft,Office,,windows_office,2021-11-03,2021-11-17,2021-11
+CVE-2017-0199,2021-11-03,2022-05-03,Known,Microsoft,Office and WordPad,,windows_office,2021-11-03,2022-05-03,2021-11
+CVE-2017-11774,2021-11-03,2022-05-03,Unknown,Microsoft,Office,CWE-119,windows_office,2021-11-03,2022-05-03,2021-11
+CVE-2016-3235,2021-11-03,2022-05-03,Unknown,Microsoft,Office,CWE-264,windows_office,2021-11-03,2022-05-03,2021-11
+CVE-2019-18988,2021-11-03,2022-05-03,Unknown,TeamViewer,Desktop,CWE-521,soporte_remoto,2021-11-03,2022-05-03,2021-11
