@@ -1,4 +1,5 @@
 cve_id,kev_date_added_raw,kev_due_date_raw,ransomware,vendor_project,product,kev_cwes,grupo_keyword_kev,kev_date_added,kev_due_date,periodo_kev
+CVE-2026-124194,2026-11-10,2026-11-24,Unknown,Microsoft,Office,CWE-356,windows_office,2026-11-10,2026-11-24,2026-11
 CVE-2009-0238,2026-04-14,2026-04-28,Unknown,Microsoft,Office,CWE-94,windows_office,2026-04-14,2026-04-28,2026-04
 CVE-2026-21514,2026-02-10,2026-03-03,Unknown,Microsoft,Office,CWE-807,windows_office,2026-02-10,2026-03-03,2026-02
 CVE-2026-21509,2026-01-26,2026-02-16,Unknown,Microsoft,Office,CWE-807,windows_office,2026-01-26,2026-02-16,2026-01

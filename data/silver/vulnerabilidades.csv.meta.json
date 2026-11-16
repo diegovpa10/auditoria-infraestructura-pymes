@@ -1,24 +1,24 @@
 {
-  "ingestado_utc": "2026-11-12T15:34:38.745843+00:00",
-  "registros_nvd_crudos": 1844,
-  "duplicados_keyword_eliminados": 42,
-  "registros_silver_validos": 1802,
+  "ingestado_utc": "2026-11-16T21:30:27.024339+00:00",
+  "registros_nvd_crudos": 2333,
+  "duplicados_keyword_eliminados": 314,
+  "registros_silver_validos": 2019,
   "registros_cuarentena": 0,
-  "coincidencias_nvd_kev": 18,
+  "coincidencias_nvd_kev": 19,
   "diagnostico_faltantes": {
-    "total_registros": 1802,
+    "total_registros": 2019,
     "faltantes_cvss": 69,
-    "porcentaje_faltantes_cvss": 3.83,
+    "porcentaje_faltantes_cvss": 3.42,
     "faltantes_attack_vector": 69,
     "faltantes_cwe": 5,
     "mecanismo_diagnosticado": "MAR (dependiente de vuln_status)",
-    "chi2_stat": 469.5604,
-    "chi2_pvalue": 2.5630422973387244e-100,
+    "chi2_stat": 520.4861,
+    "chi2_pvalue": 3.018608332932827e-110,
     "detalle_por_status": {
       "Deferred": 55,
       "Awaiting Analysis": 13,
       "Received": 1
     }
   },
-  "sha256_silver": "000838a0a50a176277fe1745ba84a259f770675b2ad4c09d02c751dd2f902380"
+  "sha256_silver": "e87df323d6a357195e641024cd7865c0f8fdc45a38a1a2370ac00932b44d76ac"
 }

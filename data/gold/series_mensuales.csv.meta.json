@@ -1,11 +1,11 @@
 {
-  "ingestado_utc": "2026-11-12T15:34:39.625133+00:00",
+  "ingestado_utc": "2026-11-16T21:30:27.697450+00:00",
   "filas_gold": 366,
   "periodos_por_grupo": 61,
-  "atipicos_iqr_detectados": 22,
-  "atipicos_mad_detectados": 13,
+  "atipicos_iqr_detectados": 23,
+  "atipicos_mad_detectados": 14,
   "columnas_completas": 24,
   "columnas_reducidas": 13,
-  "sha256_gold": "d89d45a620e5a7b868c23aab030f797050064cbde7d060cc9baab3cbee447dfc",
-  "sha256_modelo": "465ff1c4f797afcb9617730d5efddc7d568db3f6b354ac17c320c828693ac6c7"
+  "sha256_gold": "649e723fed9e8591876a7818e208db2281151f6c16c268cfaefd72c3527eb95c",
+  "sha256_modelo": "4ce88a8687f6bae25a90f921510d3708d9acaabc2e80890ee6c7a454519d0fa9"
 }
