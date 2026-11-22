@@ -6,3 +6,7 @@ fecha,fase,actividad,inicio,fin,interrupcion_min,delta_min,comentarios
 2026-11-10,calidad,revision de requisitos para e1,19:00,20:30,15,75,creacion de los requisitos a cumplir para la etapa 1
 2026-11-12,diseño,definicion para la resolucion de los conflictos de esquema y diagnosticos MCAR/MAR/MNAR,19:00,21:00,0,180,propuesta terminada para seguimiento del proyecto
 2026-11-12,codificacion,generar codigo para diagnostico MCAR/MAR/MNAR-pruebas con Pandera-Cuarentenas-deteccion de atipicos IQR,21:30,24:15,15,150,codificacion de etapa 1 terminada
+2026-11-20,diseno,definicion de fuente geoespacial DENUE y diseno de arquitectura de linaje criptografico,16:00,17:30,10,80,analisis de endpoints INEGI y diseno de esquema de trazabilidad
+2026-11-21,codificacion,implementacion de extractores DENUE bronze-silver geo con GeoPandas y gold geo,18:00,21:00,15,165,reproyeccion UTM 13N-calculo metrico de distancias y visualizacion cartografica
+2026-11-22,codificacion,integracion de linaje de extremo a extremo y puertas de calidad Pandera geo,10:00,12:30,10,140,inyeccion de metadatos Bronze en Silver y Gold-trazabilidad cve 100%
+2026-11-22,calidad,redaccion de declaracion de etica-datos.md-pruebas unitarias y ficha E2,13:00,14:45,5,100,analisis empirico de robots.txt-terminos de uso-verificacion de 16 tests

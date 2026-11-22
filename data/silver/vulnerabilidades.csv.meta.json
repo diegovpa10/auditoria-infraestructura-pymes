@@ -1,5 +1,5 @@
 {
-  "ingestado_utc": "2026-11-16T21:30:27.024339+00:00",
+  "ingestado_utc": "2026-11-22T21:07:30.588284+00:00",
   "registros_nvd_crudos": 2333,
   "duplicados_keyword_eliminados": 314,
   "registros_silver_validos": 2019,
@@ -20,5 +20,5 @@
       "Received": 1
     }
   },
-  "sha256_silver": "e87df323d6a357195e641024cd7865c0f8fdc45a38a1a2370ac00932b44d76ac"
+  "sha256_silver": "746827b675870c62eb5d5f4c35c15915d56b8f71549837254b8da3aa0a3fb540"
 }

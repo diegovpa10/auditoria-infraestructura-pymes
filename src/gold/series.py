@@ -33,6 +33,9 @@ COLUMNAS_REDUCIDAS = [
     "conteo_kev_catalogo",
     "conteo_ransomware",
     "nivel_riesgo_mensual",
+    "archivos_origen_bronce",
+    "fecha_ingesta_bronce",
+    "id_linaje",
 ]
 
 
@@ -106,21 +109,36 @@ def construir_series_gold(
     malla = pd.MultiIndex.from_product([grupos_validos, periodos], names=["grupo", "periodo"]).to_frame(index=False)
 
     if not df_silver.empty:
-        agg_nvd = (
-            df_silver.groupby(["grupo", "periodo"])
-            .agg(
-                total_cves=("cve_id", "count"),
-                cves_criticos=("severidad_discreta", lambda s: int((s == "Critico").sum())),
-                cves_altos=("severidad_discreta", lambda s: int((s == "Alto").sum())),
-                cves_medios=("severidad_discreta", lambda s: int((s == "Medio").sum())),
-                cves_bajos=("severidad_discreta", lambda s: int((s == "Bajo").sum())),
-                cvss_promedio=("cvss_base", "mean"),
-                cvss_max=("cvss_base", "max"),
-                conteo_kev=("en_kev", lambda s: int(s.sum())),
-                conteo_ransomware=("ransomware", lambda s: int((s == "Known").sum())),
+        agg_dict = {
+            "total_cves": ("cve_id", "count"),
+            "cves_criticos": ("severidad_discreta", lambda s: int((s == "Critico").sum())),
+            "cves_altos": ("severidad_discreta", lambda s: int((s == "Alto").sum())),
+            "cves_medios": ("severidad_discreta", lambda s: int((s == "Medio").sum())),
+            "cves_bajos": ("severidad_discreta", lambda s: int((s == "Bajo").sum())),
+            "cvss_promedio": ("cvss_base", "mean"),
+            "cvss_max": ("cvss_base", "max"),
+            "conteo_kev": ("en_kev", lambda s: int(s.sum())),
+            "conteo_ransomware": ("ransomware", lambda s: int((s == "Known").sum())),
+        }
+        if "archivo_origen_nvd" in df_silver.columns:
+            agg_dict["archivos_origen_bronce"] = (
+                "archivo_origen_nvd",
+                lambda s: ";".join(sorted(set(s.dropna().astype(str)))),
             )
-            .reset_index()
-        )
+        if "fecha_ingesta_nvd_utc" in df_silver.columns:
+            agg_dict["fecha_ingesta_bronce"] = (
+                "fecha_ingesta_nvd_utc",
+                lambda s: str(s.dropna().min()) if s.dropna().any() else "",
+            )
+        if "sha256_origen_nvd" in df_silver.columns:
+            agg_dict["sha256_origen_bronce"] = (
+                "sha256_origen_nvd",
+                lambda s: hashlib.sha256(";".join(sorted(set(s.dropna().astype(str)))).encode()).hexdigest()[:16]
+                if s.dropna().any()
+                else "",
+            )
+
+        agg_nvd = df_silver.groupby(["grupo", "periodo"]).agg(**agg_dict).reset_index()
         gold = malla.merge(agg_nvd, on=["grupo", "periodo"], how="left")
     else:
         gold = malla.copy()
@@ -136,6 +154,30 @@ def construir_series_gold(
             "conteo_ransomware",
         ]:
             gold[col] = 0
+
+    if "archivos_origen_bronce" not in gold.columns:
+        gold["archivos_origen_bronce"] = "config/grupos.json;bronze/catalogo_base"
+    else:
+        gold["archivos_origen_bronce"] = gold["archivos_origen_bronce"].fillna("config/grupos.json;bronze/catalogo_base")
+
+    if "fecha_ingesta_bronce" not in gold.columns:
+        gold["fecha_ingesta_bronce"] = "2021-11-01T00:00:00+00:00"
+    else:
+        gold["fecha_ingesta_bronce"] = (
+            gold["fecha_ingesta_bronce"].replace("", np.nan).fillna("2021-11-01T00:00:00+00:00")
+        )
+
+    if "sha256_origen_bronce" not in gold.columns:
+        gold["sha256_origen_bronce"] = "0000000000000000"
+    else:
+        gold["sha256_origen_bronce"] = (
+            gold["sha256_origen_bronce"].replace("", np.nan).fillna("0000000000000000")
+        )
+
+    gold["id_linaje"] = [
+        hashlib.sha256(f"{g}_{p}_{s}".encode()).hexdigest()[:16]
+        for g, p, s in zip(gold["grupo"], gold["periodo"], gold["sha256_origen_bronce"])
+    ]
 
     for col in [
         "total_cves",
@@ -231,6 +273,28 @@ def ejecutar_pipeline_gold(
     ruta_reducida = gold_dir / "series_modelo.csv"
     gold_reducido.to_csv(ruta_reducida, index=False, encoding="utf-8")
 
+    # Tabla granular de trazabilidad y linaje Oro -> Plata -> Bronce fila por fila
+    cols_trazabilidad = [
+        "cve_id",
+        "grupo",
+        "periodo",
+        "macro_categoria",
+        "cvss_base",
+        "severidad_discreta",
+        "en_kev",
+        "archivo_origen_nvd",
+        "sha256_origen_nvd",
+        "fecha_ingesta_nvd_utc",
+        "archivo_origen_kev",
+        "sha256_origen_kev",
+        "fecha_ingesta_kev_utc",
+        "id_linaje",
+    ]
+    cols_disponibles = [c for c in cols_trazabilidad if c in df_silver.columns]
+    df_trazabilidad = df_silver[cols_disponibles].copy()
+    ruta_trazabilidad = gold_dir / "trazabilidad_cve_oro.csv"
+    df_trazabilidad.to_csv(ruta_trazabilidad, index=False, encoding="utf-8")
+
     resumen = {
         "ingestado_utc": utcnow().isoformat(),
         "filas_gold": len(gold),
@@ -239,8 +303,10 @@ def ejecutar_pipeline_gold(
         "atipicos_mad_detectados": int(gold["es_atipico_mad"].sum()),
         "columnas_completas": len(gold.columns),
         "columnas_reducidas": len(gold_reducido.columns),
+        "filas_trazabilidad_cve": len(df_trazabilidad),
         "sha256_gold": hashlib.sha256(ruta_gold.read_bytes()).hexdigest(),
         "sha256_modelo": hashlib.sha256(ruta_reducida.read_bytes()).hexdigest(),
+        "sha256_trazabilidad": hashlib.sha256(ruta_trazabilidad.read_bytes()).hexdigest(),
     }
     (gold_dir / "series_mensuales.csv.meta.json").write_text(
         json.dumps(resumen, indent=2, ensure_ascii=False), encoding="utf-8"

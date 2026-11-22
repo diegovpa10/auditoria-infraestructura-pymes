@@ -15,6 +15,19 @@ ESTADOS_VALIDOS = {
     "Undergoing Analysis",
 }
 
+MUNICIPIOS_COLIMA = [
+    "Armería",
+    "Colima",
+    "Comala",
+    "Coquimatlán",
+    "Cuauhtémoc",
+    "Ixtlahuacán",
+    "Manzanillo",
+    "Minatitlán",
+    "Tecomán",
+    "Villa de Álvarez",
+]
+
 MACRO_CATEGORIA_POR_GRUPO = {
     "modems_red": "Infraestructura_Red",
     "camaras_ip": "Infraestructura_Red",
@@ -152,6 +165,13 @@ def esquema_silver(grupos_validos: list[str]) -> pa.DataFrameSchema:
                 nullable=False,
             ),
             "dias_a_kev": pa.Column(float, pa.Check.ge(0.0), nullable=True),
+            "archivo_origen_nvd": pa.Column(str, nullable=False),
+            "sha256_origen_nvd": pa.Column(str, nullable=False),
+            "fecha_ingesta_nvd_utc": pa.Column(str, nullable=False),
+            "archivo_origen_kev": pa.Column(str, nullable=True),
+            "sha256_origen_kev": pa.Column(str, nullable=True),
+            "fecha_ingesta_kev_utc": pa.Column(str, nullable=True),
+            "id_linaje": pa.Column(str, nullable=False),
         },
         unique=["grupo", "cve_id"],
         checks=[
@@ -165,7 +185,7 @@ def esquema_silver(grupos_validos: list[str]) -> pa.DataFrameSchema:
 
 
 def esquema_gold(grupos_validos: list[str]) -> pa.DataFrameSchema:
-    """Esquema estricto de la Capa Oro (series mensuales listas para pronóstico)."""
+    """Esquema estricto de la Capa Oro (series mensuales listas para pronóstico con linaje)."""
     return pa.DataFrameSchema(
         columns={
             "grupo": pa.Column(str, pa.Check.isin(grupos_validos), nullable=False),
@@ -200,8 +220,63 @@ def esquema_gold(grupos_validos: list[str]) -> pa.DataFrameSchema:
                 pa.Check.isin(["Sin_Exposicion", "Bajo", "Medio", "Alto", "Critico"]),
                 nullable=False,
             ),
+            "archivos_origen_bronce": pa.Column(str, nullable=False),
+            "fecha_ingesta_bronce": pa.Column(str, nullable=False),
+            "sha256_origen_bronce": pa.Column(str, nullable=False),
+            "id_linaje": pa.Column(str, nullable=False),
         },
         unique=["grupo", "periodo"],
+        coerce=True,
+    )
+
+
+def esquema_denue_silver() -> pa.DataFrameSchema:
+    """Esquema estricto para unidades económicas de DENUE Colima en Capa Silver."""
+    return pa.DataFrameSchema(
+        columns={
+            "pyme_id": pa.Column(
+                str,
+                pa.Check.str_matches(r"^PYME-DIST-COL-\d{3,}$"),
+                nullable=False,
+            ),
+            "clee": pa.Column(str, nullable=True),
+            "codigo_act": pa.Column(int, nullable=False),
+            "nombre_act": pa.Column(str, nullable=False),
+            "estrato_personal": pa.Column(str, nullable=False),
+            "municipio": pa.Column(str, pa.Check.isin(MUNICIPIOS_COLIMA), nullable=False),
+            "cve_mun": pa.Column(int, pa.Check.in_range(1, 10), nullable=False),
+            "latitud": pa.Column(float, pa.Check.in_range(18.5, 19.6), nullable=False),
+            "longitud": pa.Column(float, pa.Check.in_range(-104.5, -103.4), nullable=False),
+            "distancia_centro_km": pa.Column(float, pa.Check.ge(0.0), nullable=False),
+            "archivo_origen_bronce": pa.Column(str, nullable=False),
+            "fecha_ingesta_bronce_utc": pa.Column(str, nullable=False),
+            "sha256_origen_bronce": pa.Column(str, nullable=False),
+            "id_linaje": pa.Column(str, nullable=False),
+        },
+        unique=["pyme_id"],
+        coerce=True,
+    )
+
+
+def esquema_denue_gold() -> pa.DataFrameSchema:
+    """Esquema estricto para resumen geoespacial municipal de DENUE en Capa Oro."""
+    return pa.DataFrameSchema(
+        columns={
+            "municipio": pa.Column(str, pa.Check.isin(MUNICIPIOS_COLIMA), nullable=False),
+            "cve_mun": pa.Column(int, pa.Check.in_range(1, 10), nullable=False),
+            "total_pymes": pa.Column(int, pa.Check.ge(0), nullable=False),
+            "micro_0_a_5": pa.Column(int, pa.Check.ge(0), nullable=False),
+            "pequenas_6_a_10": pa.Column(int, pa.Check.ge(0), nullable=False),
+            "medianas_11_a_30": pa.Column(int, pa.Check.ge(0), nullable=False),
+            "latitud_centroide": pa.Column(float, pa.Check.in_range(18.5, 19.6), nullable=False),
+            "longitud_centroide": pa.Column(float, pa.Check.in_range(-104.5, -103.4), nullable=False),
+            "pct_concentracion_estatal": pa.Column(float, pa.Check.in_range(0.0, 100.0), nullable=False),
+            "archivo_origen_bronce": pa.Column(str, nullable=False),
+            "fecha_ingesta_bronce_utc": pa.Column(str, nullable=False),
+            "sha256_origen_bronce": pa.Column(str, nullable=False),
+            "id_linaje": pa.Column(str, nullable=False),
+        },
+        unique=["municipio"],
         coerce=True,
     )
 

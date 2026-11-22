@@ -92,6 +92,9 @@ class TestSilverYCuarentena(unittest.TestCase):
             self.assertTrue(bool(fila1["en_kev"]))
             self.assertEqual(fila1["ransomware"], "Known")
             self.assertEqual(fila1["dias_a_kev"], 10.0)
+            self.assertTrue(bool(fila1["archivo_origen_nvd"]))
+            self.assertTrue(bool(fila1["sha256_origen_nvd"]))
+            self.assertTrue(bool(fila1["id_linaje"]))
 
             fila2 = silver[silver["cve_id"] == "CVE-2024-10002"].iloc[0]
             self.assertTrue(bool(fila2["cvss_imputado"]))
@@ -195,6 +198,15 @@ class TestGoldSeries(unittest.TestCase):
         # Verificar ceros explícitos en contpaqi
         cont = gold[gold["grupo"] == "contpaqi"]
         self.assertTrue((cont["nivel_riesgo_mensual"] == "Sin_Exposicion").all())
+
+        # Verificar linaje en Capa Oro
+        self.assertIn("archivos_origen_bronce", gold.columns)
+        self.assertIn("fecha_ingesta_bronce", gold.columns)
+        self.assertIn("sha256_origen_bronce", gold.columns)
+        self.assertIn("id_linaje", gold.columns)
+        self.assertTrue(gold["archivos_origen_bronce"].notna().all())
+        self.assertTrue(gold["fecha_ingesta_bronce"].notna().all())
+        self.assertTrue(gold["id_linaje"].notna().all())
 
 
 if __name__ == "__main__":

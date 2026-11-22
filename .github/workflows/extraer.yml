@@ -25,16 +25,24 @@ jobs:
         env:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}   # opcional; sin ella el proceso es mas lento
         run: python src/bronze/nvd.py
+      - name: Extraer DENUE (INEGI)
+        env:
+          INEGI_DENUE_TOKEN: ${{ secrets.INEGI_DENUE_TOKEN }}   # opcional; fallback a descarga masiva oficial
+        run: python src/bronze/denue.py
       - name: Revisar periodos
         run: python src/bronze/check_periodos.py
       - name: Procesar capa Silver y Puerta de Calidad (Pandera)
         run: python src/silver/limpieza.py
+      - name: Procesar capa Silver Geoespacial (Anonimización y GeoPandas)
+        run: python src/silver/geo.py
       - name: Procesar capa Gold (series mensuales y normalización)
         run: python src/gold/series.py
+      - name: Procesar capa Gold Geoespacial y Cartografía
+        run: python src/gold/geo.py
       - name: Guardar datos nuevos
         run: |
           git config user.name "github-actions"
           git config user.email "actions@users.noreply.github.com"
-          git add data
+          git add data docs/E2
           git diff --cached --quiet || git commit -m "pipeline: actualizacion automatica Bronze-Silver-Gold $(date -u +%F)"
           git push

@@ -42,7 +42,7 @@ def _extraer_cvss(metrics: dict) -> tuple[float | None, str | None, str | None]:
 
 
 def extraer_nvd_crudo(carpeta_nvd: Path, grupos: dict) -> pd.DataFrame:
-    """Lee archivos Bronze de NVD y aplana el JSON anidado."""
+    """Lee archivos Bronze de NVD y aplana el JSON anidado conservando linaje."""
     filas = []
     for grupo in grupos:
         dir_grupo = carpeta_nvd / grupo
@@ -50,6 +50,17 @@ def extraer_nvd_crudo(carpeta_nvd: Path, grupos: dict) -> pd.DataFrame:
             continue
         for archivo in sorted(dir_grupo.glob("*.json.gz")):
             keyword_origen = archivo.name.split("_")[0]
+            meta_path = archivo.parent / (archivo.name + ".meta.json")
+            meta = {}
+            if meta_path.exists():
+                try:
+                    meta = json.loads(meta_path.read_text(encoding="utf-8"))
+                except Exception:
+                    pass
+            sha256_nvd = meta.get("sha256_contenido", "")
+            fecha_nvd = meta.get("ingestado_utc", "")
+            rel_archivo = f"nvd/{grupo}/{archivo.name}"
+
             for pagina in leer_raw(archivo):
                 for item in pagina.get("respuesta", {}).get("vulnerabilities", []):
                     cve = item.get("cve", {})
@@ -81,13 +92,16 @@ def extraer_nvd_crudo(carpeta_nvd: Path, grupos: dict) -> pd.DataFrame:
                             "cwe_principal": cwes[0] if cwes else None,
                             "num_refs": len(cve.get("references", [])),
                             "descripcion": descs[0].strip() if descs else "",
+                            "archivo_origen_nvd": rel_archivo,
+                            "sha256_origen_nvd": sha256_nvd,
+                            "fecha_ingesta_nvd_utc": fecha_nvd,
                         }
                     )
     return pd.DataFrame(filas)
 
 
 def extraer_kev_crudo(carpeta_kev: Path, grupos: dict) -> pd.DataFrame:
-    """Lee el último snapshot KEV de Bronze y homologa sus columnas base."""
+    """Lee el último snapshot KEV de Bronze y homologa sus columnas base con linaje."""
     archivos = sorted(carpeta_kev.glob("kev_*.json.gz"))
     if not archivos:
         return pd.DataFrame(
@@ -100,9 +114,23 @@ def extraer_kev_crudo(carpeta_kev: Path, grupos: dict) -> pd.DataFrame:
                 "product",
                 "kev_cwes",
                 "grupo_keyword_kev",
+                "archivo_origen_kev",
+                "sha256_origen_kev",
+                "fecha_ingesta_kev_utc",
             ]
         )
     datos = leer_raw(archivos[-1])
+    meta_path = archivos[-1].parent / (archivos[-1].name + ".meta.json")
+    meta_k = {}
+    if meta_path.exists():
+        try:
+            meta_k = json.loads(meta_path.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    sha256_k = meta_k.get("sha256_contenido", "")
+    fecha_k = meta_k.get("ingestado_utc", "")
+    rel_k = f"kev/{archivos[-1].name}"
+
     filas = []
     for v in datos.get("vulnerabilities", []):
         texto = f"{v.get('vendorProject', '')} {v.get('product', '')}"
@@ -117,6 +145,9 @@ def extraer_kev_crudo(carpeta_kev: Path, grupos: dict) -> pd.DataFrame:
                 "product": v.get("product", ""),
                 "kev_cwes": ",".join(v.get("cwes", [])),
                 "grupo_keyword_kev": ",".join(grupos_match) if grupos_match else None,
+                "archivo_origen_kev": rel_k,
+                "sha256_origen_kev": sha256_k,
+                "fecha_ingesta_kev_utc": fecha_k,
             }
         )
     return pd.DataFrame(filas)
@@ -246,6 +277,13 @@ def ejecutar_pipeline_silver(
     kev_raw = df_kev_inyectado.copy() if df_kev_inyectado is not None else extraer_kev_crudo(bronze / "kev", grupos)
     total_nvd_crudo = len(nvd_raw)
 
+    if "archivo_origen_nvd" not in nvd_raw.columns:
+        nvd_raw["archivo_origen_nvd"] = "nvd/simulado/cve.json.gz"
+    if "sha256_origen_nvd" not in nvd_raw.columns:
+        nvd_raw["sha256_origen_nvd"] = "simulado_sha256_nvd"
+    if "fecha_ingesta_nvd_utc" not in nvd_raw.columns:
+        nvd_raw["fecha_ingesta_nvd_utc"] = utcnow().isoformat()
+
     cuarentenas: list[pd.DataFrame] = []
 
     # 2. Parseo seguro de tipos y deduplicación NVD
@@ -260,6 +298,13 @@ def ejecutar_pipeline_silver(
     # 3. Validación y preparación de KEV
     if not kev_raw.empty:
         kev_work = kev_raw.copy()
+        if "archivo_origen_kev" not in kev_work.columns:
+            kev_work["archivo_origen_kev"] = "kev/simulado/kev.json.gz"
+        if "sha256_origen_kev" not in kev_work.columns:
+            kev_work["sha256_origen_kev"] = "simulado_sha256_kev"
+        if "fecha_ingesta_kev_utc" not in kev_work.columns:
+            kev_work["fecha_ingesta_kev_utc"] = utcnow().isoformat()
+
         kev_work["kev_date_added"] = pd.to_datetime(kev_work["kev_date_added_raw"], errors="coerce").dt.tz_localize(None)
         kev_work["kev_due_date"] = pd.to_datetime(kev_work["kev_due_date_raw"], errors="coerce").dt.tz_localize(None)
         kev_valid, cuar_kev = validar_con_cuarentena(kev_work, esquema_kev(), etapa="validacion_kev")
@@ -276,12 +321,27 @@ def ejecutar_pipeline_silver(
                 "vendor_project": pd.Series(dtype="object"),
                 "product": pd.Series(dtype="object"),
                 "grupo_keyword_kev": pd.Series(dtype="object"),
+                "archivo_origen_kev": pd.Series(dtype="object"),
+                "sha256_origen_kev": pd.Series(dtype="object"),
+                "fecha_ingesta_kev_utc": pd.Series(dtype="object"),
             }
         )
 
     # 4. Integración y resolución de conflictos de esquema (NVD + KEV)
     integrado = nvd_dedup.merge(
-        kev_valid[["cve_id", "kev_date_added", "kev_due_date", "ransomware", "vendor_project", "product"]],
+        kev_valid[
+            [
+                "cve_id",
+                "kev_date_added",
+                "kev_due_date",
+                "ransomware",
+                "vendor_project",
+                "product",
+                "archivo_origen_kev",
+                "sha256_origen_kev",
+                "fecha_ingesta_kev_utc",
+            ]
+        ],
         on="cve_id",
         how="left",
     )
@@ -328,6 +388,11 @@ def ejecutar_pipeline_silver(
     df_silver["macro_categoria"] = df_silver["grupo"].map(MACRO_CATEGORIA_POR_GRUPO)
     df_silver["periodo"] = df_silver["published"].dt.to_period("M").astype(str)
 
+    df_silver["id_linaje"] = [
+        hashlib.sha256(f"{cid}_{grp}_{orig}".encode()).hexdigest()[:16]
+        for cid, grp, orig in zip(df_silver["cve_id"], df_silver["grupo"], df_silver["archivo_origen_nvd"])
+    ]
+
     columnas_silver = [
         "cve_id",
         "grupo",
@@ -352,6 +417,13 @@ def ejecutar_pipeline_silver(
         "ransomware",
         "dias_a_kev",
         "descripcion",
+        "archivo_origen_nvd",
+        "sha256_origen_nvd",
+        "fecha_ingesta_nvd_utc",
+        "archivo_origen_kev",
+        "sha256_origen_kev",
+        "fecha_ingesta_kev_utc",
+        "id_linaje",
     ]
     df_silver = df_silver[columnas_silver].sort_values(["published", "grupo", "cve_id"]).reset_index(drop=True)
 

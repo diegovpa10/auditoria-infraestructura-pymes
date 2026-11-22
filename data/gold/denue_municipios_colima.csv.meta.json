@@ -1,0 +1,10 @@
+{
+  "ingestado_utc": "2026-11-22T21:07:49.585397+00:00",
+  "total_pymes_procesadas": 119,
+  "municipios_representados": 10,
+  "mapa_png_generado": "C:\\Dev2\\observatorio-pymes\\observatorio-pymes\\docs\\E2\\mapa_exposicion_colima.png",
+  "mapa_html_generado": "C:\\Dev2\\observatorio-pymes\\observatorio-pymes\\docs\\E2\\mapa_distribucion.html",
+  "sha256_denue_municipios": "1f8336903037fb17f208225e13a69a78df8ab53b24451a93610b5cb8acb9f91a",
+  "sha256_exposicion_geo": "56669ecfb0c2a6c6c7ea52a15af74876fef7a457a8a44f0cdfc627621b4c0696",
+  "sha256_mapa_png": "50f6cf858576171d6f1d64d02bccd0a2de32e5299b807925604c12ce294cb0c3"
+}

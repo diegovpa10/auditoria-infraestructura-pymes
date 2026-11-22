@@ -1,0 +1,13 @@
+{
+  "fuente": "INEGI DENUE Datos Abiertos (Descarga Masiva)",
+  "url": "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip",
+  "entidad": "06 - Colima",
+  "sector": "Comercio al por mayor de fertilizantes, plaguicidas y productos químicos",
+  "terminos_uso": "Términos de Libre Uso de la Información del INEGI",
+  "registros_obtenidos": 119,
+  "archivo": "denue_colima_quimicos.json.gz",
+  "total_registros": 119,
+  "sha256_contenido": "4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb",
+  "bytes_contenido": 158119,
+  "ingestado_utc": "2026-11-22T20:55:39.381915+00:00"
+}

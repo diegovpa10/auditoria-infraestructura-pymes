@@ -1,1 +1,3 @@
 fecha,num,tipo,fase_inyeccion,fase_remocion,tiempo_correccion_min,descripcion
+2026-11-22,1,logica_import,codificacion,calidad,15,colision de nombres al importar silver/geo.py y gold/geo.py en test_geo; se corrigio con importacion modular con __init__.py
+2026-11-22,2,verificacion_texto,codificacion,calidad,5,asercion sensible a mayusculas de leaflet en test_geo; se corrigio a busqueda normalizada
