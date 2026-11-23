@@ -1,0 +1,14 @@
+{
+  "fuente": "NVD API 2.0",
+  "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+  "grupo": "impresoras_hp",
+  "keyword": "hp officejet",
+  "ventana": [
+    "2026-09-21",
+    "2026-11-23"
+  ],
+  "con_api_key": true,
+  "sha256_contenido": "727a0e25d1be49996563a9a85dc3c8d9f869a17ea760822d476c149e439a6255",
+  "bytes_contenido": 346,
+  "ingestado_utc": "2026-11-23T23:13:11.305049+00:00"
+}

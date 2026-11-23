@@ -1,11 +1,11 @@
 municipio,cve_mun,total_pymes_distribucion,pct_distribuidoras_estatal,cvss_promedio_parque_ti,vulnerabilidades_criticas_pico,total_explotadas_kev,score_exposicion_combinado,nivel_riesgo_geoespacial,archivos_origen_bronce,fecha_ingesta_bronce,sha256_origen_bronce,id_linaje
-Tecomán,9,40,33.61,3.92,8,19,23.52,Critico,denue_colima_quimicos.json.gz;nvd;kev,2026-11-22T20:55:39.381915+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,bc56af7cbc1202b0
-Colima,2,27,22.69,3.92,8,19,15.88,Critico,denue_colima_quimicos.json.gz;nvd;kev,2026-11-22T20:55:39.381915+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,af794e4ba2cb75ff
-Manzanillo,7,13,10.92,3.92,8,19,7.64,Alto,denue_colima_quimicos.json.gz;nvd;kev,2026-11-22T20:55:39.381915+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,0a57125ea8bb4bca
-Armería,1,12,10.08,3.92,8,19,7.06,Alto,denue_colima_quimicos.json.gz;nvd;kev,2026-11-22T20:55:39.381915+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,f0bd838f048eb3ae
-Cuauhtémoc,5,10,8.4,3.92,8,19,5.88,Medio,denue_colima_quimicos.json.gz;nvd;kev,2026-11-22T20:55:39.381915+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,b38a031fe9269878
-Villa de Álvarez,10,8,6.72,3.92,8,19,4.7,Medio,denue_colima_quimicos.json.gz;nvd;kev,2026-11-22T20:55:39.381915+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,07b21f4022abecef
-Coquimatlán,4,6,5.04,3.92,8,19,3.53,Medio,denue_colima_quimicos.json.gz;nvd;kev,2026-11-22T20:55:39.381915+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,fbe6b4dabc460bc9
-Comala,3,1,0.84,3.92,8,19,0.59,Bajo,denue_colima_quimicos.json.gz;nvd;kev,2026-11-22T20:55:39.381915+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,d36defd45b065618
-Ixtlahuacán,6,1,0.84,3.92,8,19,0.59,Bajo,denue_colima_quimicos.json.gz;nvd;kev,2026-11-22T20:55:39.381915+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,08baeafa1fab54d2
-Minatitlán,8,1,0.84,3.92,8,19,0.59,Bajo,denue_colima_quimicos.json.gz;nvd;kev,2026-11-22T20:55:39.381915+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,99cb87c8df715404
+Tecomán,9,40,33.61,3.92,8,19,23.52,Critico,denue_colima_quimicos.json.gz;nvd;kev,2026-11-23T23:13:18.646393+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,bc56af7cbc1202b0
+Colima,2,27,22.69,3.92,8,19,15.88,Critico,denue_colima_quimicos.json.gz;nvd;kev,2026-11-23T23:13:18.646393+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,af794e4ba2cb75ff
+Manzanillo,7,13,10.92,3.92,8,19,7.64,Alto,denue_colima_quimicos.json.gz;nvd;kev,2026-11-23T23:13:18.646393+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,0a57125ea8bb4bca
+Armería,1,12,10.08,3.92,8,19,7.06,Alto,denue_colima_quimicos.json.gz;nvd;kev,2026-11-23T23:13:18.646393+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,f0bd838f048eb3ae
+Cuauhtémoc,5,10,8.4,3.92,8,19,5.88,Medio,denue_colima_quimicos.json.gz;nvd;kev,2026-11-23T23:13:18.646393+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,b38a031fe9269878
+Villa de Álvarez,10,8,6.72,3.92,8,19,4.7,Medio,denue_colima_quimicos.json.gz;nvd;kev,2026-11-23T23:13:18.646393+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,07b21f4022abecef
+Coquimatlán,4,6,5.04,3.92,8,19,3.53,Medio,denue_colima_quimicos.json.gz;nvd;kev,2026-11-23T23:13:18.646393+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,fbe6b4dabc460bc9
+Comala,3,1,0.84,3.92,8,19,0.59,Bajo,denue_colima_quimicos.json.gz;nvd;kev,2026-11-23T23:13:18.646393+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,d36defd45b065618
+Ixtlahuacán,6,1,0.84,3.92,8,19,0.59,Bajo,denue_colima_quimicos.json.gz;nvd;kev,2026-11-23T23:13:18.646393+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,08baeafa1fab54d2
+Minatitlán,8,1,0.84,3.92,8,19,0.59,Bajo,denue_colima_quimicos.json.gz;nvd;kev,2026-11-23T23:13:18.646393+00:00,4211b94e27f2251964e5cd78277fb0186f65ac1704f768ac425e10647e375fcb,99cb87c8df715404

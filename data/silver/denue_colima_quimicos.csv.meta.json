@@ -1,8 +1,8 @@
 {
-  "ingestado_utc": "2026-11-22T21:07:42.121555+00:00",
+  "ingestado_utc": "2026-11-23T23:13:21.117990+00:00",
   "registros_bronce": 119,
   "registros_silver_validos": 119,
   "registros_cuarentena": 0,
   "municipios_representados": 10,
-  "sha256_silver": "5aa9276073aa19c79838e14a9de6b21f534e158f78214b4c62047233dc90e8b3"
+  "sha256_silver": "49bd8a231850d93b95c8f409a93324fbcddac0ca2005dc6b281bcce90dba4824"
 }

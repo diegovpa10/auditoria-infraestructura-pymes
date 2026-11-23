@@ -1,10 +1,10 @@
 {
-  "ingestado_utc": "2026-11-22T21:07:49.585397+00:00",
+  "ingestado_utc": "2026-11-23T23:13:23.749114+00:00",
   "total_pymes_procesadas": 119,
   "municipios_representados": 10,
-  "mapa_png_generado": "C:\\Dev2\\observatorio-pymes\\observatorio-pymes\\docs\\E2\\mapa_exposicion_colima.png",
-  "mapa_html_generado": "C:\\Dev2\\observatorio-pymes\\observatorio-pymes\\docs\\E2\\mapa_distribucion.html",
-  "sha256_denue_municipios": "1f8336903037fb17f208225e13a69a78df8ab53b24451a93610b5cb8acb9f91a",
-  "sha256_exposicion_geo": "56669ecfb0c2a6c6c7ea52a15af74876fef7a457a8a44f0cdfc627621b4c0696",
-  "sha256_mapa_png": "50f6cf858576171d6f1d64d02bccd0a2de32e5299b807925604c12ce294cb0c3"
+  "mapa_png_generado": "/home/runner/work/auditoria-infraestructura-pymes/auditoria-infraestructura-pymes/docs/E2/mapa_exposicion_colima.png",
+  "mapa_html_generado": "/home/runner/work/auditoria-infraestructura-pymes/auditoria-infraestructura-pymes/docs/E2/mapa_distribucion.html",
+  "sha256_denue_municipios": "106247cee857d7a0049dd54ad48b943b239959e0dde4a9ecc6a8c404fdf3e7cc",
+  "sha256_exposicion_geo": "3f3ff6a96c3d4bb2fb9913f4a227bea0f8ee1371561d37e2932344c8bf46b647",
+  "sha256_mapa_png": "2793517eb26039ec7a2f07afbbe5ba03e4dbd2a5b66aa57d3e50bf317e30e0c8"
 }
